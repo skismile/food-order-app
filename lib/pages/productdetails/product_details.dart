@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -37,9 +39,17 @@ Widget ProductDetailsBody(data) {
           height: 10,
         ),
         Text(
-          "Price   ₹${data[0]["price"]}",
+          "Price   ₹${random()}",
           style: TextStyle(
               fontWeight: FontWeight.bold, fontSize: 20, color: Colors.green),
+        ),
+SizedBox(
+          height: 10,
+        ),
+        Text("However, product and food demonstrators do much more than just provide snacks to hungry shoppers. They're responsible for generating interest in and sales of a variety of products, and work in many venues other than grocery stores. Product and food demonstrators conduct their sales and promote to large audiences.",style: TextStyle(color: Colors.black.withOpacity(0.5)),),
+      
+      SizedBox(
+          height: 10,
         ),
         Row(
           children: [
@@ -73,9 +83,17 @@ Widget ProductDetailsBody(data) {
 
 // ------------------------------------
 
+double random() {
+  Random random = Random();
+  double randomNumber = (random.nextInt(9) + 1) * 100;
+  print(randomNumber);
+  return randomNumber;
+}
+
 Widget HeroProductDetailsImage(data) {
   return Container(
     margin: EdgeInsets.only(top: 20, bottom: 10),
+    padding: EdgeInsets.all(10),
     width: double.infinity,
     height: 200,
     child: ListView.builder(

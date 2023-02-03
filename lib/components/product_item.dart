@@ -66,7 +66,30 @@ class ProdutItem extends StatelessWidget {
                 ),
               )
             ],
-          )
+          ),
+
+//           Row(
+//             children: [
+
+// OutlinedButton(
+// style:  OutlinedButton.styleFrom(
+  
+//     side: BorderSide(width: 1.0, color: Colors.red),),
+//   onPressed: (){
+
+// }, child: Icon(Icons.remove,color: Colors.red,)),
+//                 Text("1",style: TextStyle(fontSize: 20),),
+                
+//                 OutlinedButton(
+//                   style:  OutlinedButton.styleFrom(
+//     side: BorderSide(width: 1.0, color: Colors.red),),
+//                   onPressed: (){
+
+//                 }, child: Icon(Icons.add,color: Colors.red),)
+//             ],
+//           ),
+         
+              
         ],
       ),
     );

@@ -17,7 +17,7 @@ Widget PageTitle() {
 }
 
 // ignore: non_constant_identifier_names
-Widget ThemeButtons(isGrid, isDark, changeTheme, changeListTheme) {
+Widget ThemeButtons(isGrid, isDark, changeTheme, changeListTheme,) {
   return Container(
     width: double.infinity,
     padding: EdgeInsets.all(10),
@@ -51,6 +51,35 @@ Widget ThemeButtons(isGrid, isDark, changeTheme, changeListTheme) {
               isDark ? "Light Mode" : "Dark Mode",
               style: TextStyle(),
             )),
+
+ SizedBox(
+          width: 20,
+        ),
+            DropdownButton(
+            elevation: 300,
+      style: const TextStyle(color: Colors.red),
+      value: "---sort---",
+             icon: Icon(Icons.sort,color: Colors.red,),
+              items:[
+          
+  DropdownMenuItem<String>(
+          value: "---sort---",
+          child: Text("--Sort--")
+ ),
+ DropdownMenuItem<String>(
+          value: "High To Low",
+          child: Text("High To Low")
+ ),
+ DropdownMenuItem<String>(
+          value: "Low To High",
+          child: Text("Low To High")
+ )
+            ]
+            
+            , onChanged: (value){
+
+
+            })
       ],
     ),
   );
