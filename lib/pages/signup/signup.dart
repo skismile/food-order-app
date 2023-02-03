@@ -1,11 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:fruit/components/my_drawer.dart';
 import 'package:get/get.dart';
 // import 'package:getx_cust/screens/Login/login_controller.dart';
 import "package:http/http.dart" as http;
 
-class Login extends StatelessWidget {
+class Signup extends StatelessWidget {
   var email = TextEditingController();
   var password = TextEditingController();
   // var loginController = Get.find<LoginController>();
@@ -14,9 +15,11 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+     
       appBar: AppBar(
+        
         backgroundColor: Colors.red,
-        title: Text("Login Page",style: TextStyle(fontFamily: "Ohbaby"),)),
+        title: Text("Signup Page",style: TextStyle(fontFamily: "Ohbaby"),)),
       body: Card(
         child: SingleChildScrollView(
             child: Container(
@@ -25,7 +28,7 @@ class Login extends StatelessWidget {
           child: Column(
 
             children: [
-              Text("Login Page",style: TextStyle(color: Colors.red,fontSize: 30,fontFamily: "Ohbaby"),),
+              Text("Create Your Account",style: TextStyle(color: Colors.red,fontSize: 30,fontFamily: "Ohbaby"),),
               TextField(
                 controller: email,
                 decoration: InputDecoration(labelText: "Email"),
@@ -39,9 +42,9 @@ class Login extends StatelessWidget {
                   backgroundColor: MaterialStateProperty.all(Colors.red)
                 ),
                   onPressed: () {
-                    // LoginHandler(email.text, password.text, status.isAuth);
+                   
                   },
-                  child: Text("Login",style: TextStyle(fontFamily: 'Ohbaby'),))
+                  child: Text("Create Account",style: TextStyle(fontFamily: 'Ohbaby'),))
             ],
           ),
         )),
@@ -51,21 +54,3 @@ class Login extends StatelessWidget {
 }
 
 // ignore: non_constant_identifier_names
-LoginHandler(String email, String password, RxBool status) async {
-  var url = Uri.parse("https://reqres.in/api/login");
-  var user = await http.post(url,
-      body: {"email": email, "password": password},
-      headers: {"Contained-Type": "application/json"});
-
-  var json = jsonDecode(user.body);
-  // print(json);
-  // print("${loginController}");
-  print("token is ${status}");
-  if (json["token"] != null) {
-    print("--------------------------------------");
-    status = true as RxBool;
-    Get.snackbar("Validation Complete", "User Login Successfull");
-    // Get.toNamed("/");
-    // print("token is ${status}");
-  }
-}

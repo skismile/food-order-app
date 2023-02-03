@@ -2,63 +2,99 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProductDetails extends StatelessWidget {
-const ProductDetails({ Key? key }) : super(key: key);
+  var data = Get.arguments;
 
+  ProductDetails({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
+    print(data);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
         title: Text("Product Details"),
       ),
-      body: Text("123")
-      
-//       ListView(
-//         children: [
-//           Image.network(
-//             "${data[0].url}",
-//             width: 500,
-//           ),
-//           Text(
-//             "${data[0].title}",
-//             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-//           ),
-//           Text(
-//             "Price   ₹${data[0].price}",
-//             style: TextStyle(
-//                 fontWeight: FontWeight.bold, fontSize: 20, color: Colors.green),
-//           ),
-//           Text(
-//             "Mrp  ₹${data[0].fprice}",
-//             style: TextStyle(
-//                 fontWeight: FontWeight.bold,
-//                 fontSize: 20,
-//                 color: Colors.red,
-//                 decoration: TextDecoration.lineThrough),
-//           ),
-//           Text(
-//             "Discount  ${data[0].off}",
-//             style: TextStyle(fontSize: 15, color: Colors.green),
-//           ),
-//           Text(
-//             "${data[0].mkt}",
-//             style: TextStyle(color: Colors.grey, fontSize: 25),
-//           ),
-//           Row(
-//             children: [
-//               ElevatedButton(
-//                   onPressed: () {
-//                     Get.snackbar("Add to cart", "Item Added");
-//                   },
-//                   child: Text("Add To Cart")),
-//               ElevatedButton(onPressed: () {
-//  Get.snackbar("Buy item", "Thanks for Purchasing",backgroundColor: Colors.green);
-
-//               }, child: Text("Buy")),
-//             ],
-//           )
-//         ],
-//       ),
+      body: ListView(
+        children: [
+          HeroProductDetailsImage(data[0]['image']),
+          ProductDetailsBody(data)
+        ],
+      ),
     );
   }
+}
+
+Widget ProductDetailsBody(data) {
+  return Container(
+    padding: EdgeInsets.all(10),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "${data[0]["title"]}",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Text(
+          "Price   ₹${data[0]["price"]}",
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 20, color: Colors.green),
+        ),
+        Row(
+          children: [
+            ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.red),
+                ),
+                onPressed: () {
+                  Get.snackbar("Add to cart", "Item Added",
+                      backgroundColor: Colors.green);
+                },
+                child: Text("Add To Cart")),
+            SizedBox(
+              width: 10,
+            ),
+            ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.red),
+                ),
+                onPressed: () {
+                  Get.snackbar("Buy item", "Thanks for Purchasing",
+                      backgroundColor: Colors.green);
+                },
+                child: Text("Buy")),
+          ],
+        ),
+      ],
+    ),
+  );
+}
+
+// ------------------------------------
+
+Widget HeroProductDetailsImage(data) {
+  return Container(
+    margin: EdgeInsets.only(top: 20, bottom: 10),
+    width: double.infinity,
+    height: 200,
+    child: ListView.builder(
+      itemCount: data.length,
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (context, index) {
+        return Container(
+          margin: EdgeInsets.all(10),
+          width: 400,
+          height: 200,
+          foregroundDecoration: BoxDecoration(
+            image: DecorationImage(
+              // image: NetworkImage(data[index]["image"]),
+              image: NetworkImage("${data}"),
+              fit: BoxFit.fill,
+            ),
+          ),
+        );
+      },
+    ),
+  );
 }

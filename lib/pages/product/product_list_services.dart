@@ -1,8 +1,8 @@
-
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:fruit/components/product_item.dart';
+import 'package:get/get.dart';
 
 Widget PageTitle() {
   return Container(
@@ -35,6 +35,9 @@ Widget ThemeButtons(isGrid, isDark, changeTheme, changeListTheme) {
             child: Text(
               isGrid ? "List Mode" : "Grid Mode",
             )),
+        SizedBox(
+          width: 20,
+        ),
         ElevatedButton(
             style: ElevatedButton.styleFrom(
                 shape: const StadiumBorder(),
@@ -87,22 +90,26 @@ Widget Listing(isGrid, data) {
           itemCount: data.length,
           itemBuilder: (context, index) {
             return ProdutItem(
-                image_url: data[index]["image"],
-                title: data[index]["title"],
-                description:
-                    "Broadly there are two categories of fruits: fleshy fruits and dry fruits",
-                price: random());
+              image_url: data[index]["image"],
+              title: data[index]["title"],
+              description:
+                  "Broadly there are two categories of fruits: fleshy fruits and dry fruits",
+              price: random(),
+              data: data[index],
+            );
           },
         )
       : ListView.builder(
           itemCount: 10,
           itemBuilder: (context, index) {
             return ProdutItem(
-                image_url: data[index]["image"],
-                title: data[index]["title"],
-                description:
-                    "Broadly there are two categories of fruits: fleshy fruits and dry fruits",
-                price: random());
+              image_url: data[index]["image"],
+              title: data[index]["title"],
+              description:
+                  "Broadly there are two categories of fruits: fleshy fruits and dry fruits",
+              price: random(),
+              data: data[index],
+            );
           });
 }
 
@@ -113,65 +120,3 @@ double random() {
   return randomNumber;
 }
 
-class MyDrawer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Drawer(
-      child: Column(
-        children: [
-          Card(
-            child: ListTile(
-              title: Text("Product"),
-              leading: Icon(Icons.install_mobile_rounded),
-              onTap: () => {
-                // Get.back(),
-                // Get.toNamed("/product")
-              },
-            ),
-          ),
-          Card(
-            child: ListTile(
-              title: Text("Cart"),
-              leading: Icon(Icons.production_quantity_limits),
-              onTap: () => {
-                // Get.back(),
-                // Get.toNamed("/cart")
-              },
-            ),
-          ),
-          Card(
-            child: ListTile(
-              title: Text("Login"),
-              leading: Icon(Icons.login),
-              onTap: () => {
-                // Get.back(),
-                // Get.toNamed("/login")
-              },
-            ),
-          ),
-          Card(
-            child: ListTile(
-              title: Text("Logout"),
-              leading: Icon(Icons.logout),
-              onTap: () => {
-                // Get.back(),
-                // Get.toNamed("/logout")
-              },
-            ),
-          ),
-          Card(
-            child: ListTile(
-              title: Text("Sign Up"),
-              leading: Icon(Icons.create),
-              onTap: () => {
-                // Get.back(),
-                // Get.toNamed("/signup")
-              },
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}

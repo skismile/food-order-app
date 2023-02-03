@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:fruit/components/my_drawer.dart';
 import 'package:fruit/components/product_item.dart';
 import 'package:fruit/pages/product/product_list_services.dart';
 import 'package:http/http.dart' as http;
@@ -63,6 +64,7 @@ class _ProductListState extends State<ProductList> {
           FloatingActionButton(onPressed: () {}, child: Icon(Icons.chat)),
       appBar: AppBar(
           actions: [
+            
             Container(
               padding: EdgeInsets.all(10),
               child: Icon(

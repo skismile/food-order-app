@@ -7,6 +7,7 @@ class ProdutItem extends StatelessWidget {
   final String title;
   final String description;
   final double price;
+  final Map data;
   
 
   ProdutItem(
@@ -15,7 +16,9 @@ class ProdutItem extends StatelessWidget {
       required this.image_url,
       required this.title,
       required this.description,
-      required this.price});
+      required this.price,
+      required this.data
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +56,7 @@ class ProdutItem extends StatelessWidget {
                     // ));
                     Get.toNamed("/productDetails",
                     // arguments: [p.productList[index]]
+                    arguments: [data]
                     );
                   },
                   style: ElevatedButton.styleFrom(

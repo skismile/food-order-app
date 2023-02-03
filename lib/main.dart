@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fruit/pages/cart/cart.dart';
+import 'package:fruit/pages/login/login.dart';
 import 'package:fruit/pages/product/product_lis.dart';
 import 'package:fruit/components/splash_screen.dart';
 
 
 import 'package:fruit/pages/productdetails/product_details.dart';
+import 'package:fruit/pages/signup/signup.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -38,21 +41,23 @@ class _FoodAppState extends State<FoodApp> {
       getPages: [
         // GetPage(name: "/", page: () => Home(), ),
         GetPage(
-          name: "/",
+          name: "/products",
           page: () => ProductList(changeTheme: changeTheme, isDark: false),
         ),
         GetPage(
           name: "/productDetails",
-          page: () => const ProductDetails(),
+          page: () =>  ProductDetails(),
         ),
-        // GetPage(
-        //     name: "/cart", page: () => CartPage(), ),
+        GetPage(
+            name: "/cart", page: () => Cart(), ),
         //     GetPage(
         //     name: "/singleproduct",),
         //      GetPage(
         //     name: "/cart", page: () => CartPage(), ),
-        // GetPage(
-        // name: "/login", page: () => Login(),)
+        GetPage(
+        name: "/login", page: () => Login(),),
+        GetPage(
+        name: "/signup", page: () => Signup(),)
       ],
       // ProductList(changeTheme: changeTheme,isDark: dark,),
     );
